@@ -1,12 +1,13 @@
 from kivymd.app import MDApp
-from kivymd.uix.navigationdrawer import NavigationLayout
+from kivymd.uix.navigationdrawer import MDNavigationLayout
 from kivy.clock import Clock
 from kivy.uix.screenmanager import NoTransition, SlideTransition
 import json
 
-class MainNavigationLayout(NavigationLayout):
+
+class MainNavigationLayout(MDNavigationLayout):
     def __init__(self, *args, **kwargs):
-        NavigationLayout.__init__(self, *args, **kwargs)
+        MDNavigationLayout.__init__(self, *args, **kwargs)
         self._panel_disable = True
 
         Clock.schedule_once(self.check_logged)
@@ -42,12 +43,12 @@ class MainNavigationLayout(NavigationLayout):
         self.ids.screen_manager.current = 'screen_login'
         self.set_data("logged", "False")
 
-
     def navigate_to(self, page):
         self.ids.screen_manager.current = page
 
     def open_menu(self, *args):
         self.toggle_nav_drawer()
+
 
 class Main(MDApp):
     def __init__(self, *args, **kwargs):
